@@ -5,6 +5,7 @@ plugins {
 android {
     namespace = "com.example.lab5"
     compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         applicationId = "com.example.lab5"
@@ -38,4 +39,6 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.5.0")
     implementation ("com.squareup.retrofit2:converter-scalars:2.5.0'")
     implementation ("com.squareup.retrofit2:converter-gson:2.5.0")
+    implementation("com.example.android:app-magic:12.3")
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 }

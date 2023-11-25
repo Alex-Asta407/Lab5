@@ -1,6 +1,7 @@
+import org.gradle.kotlin.dsl.support.classPathBytesRepositoryFor
+
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
     }
