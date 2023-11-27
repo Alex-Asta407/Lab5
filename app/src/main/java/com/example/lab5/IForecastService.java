@@ -5,7 +5,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 
-public interface IRatesService {
+public interface IForecastService {
     @GET
-    Call<ResponseBody> getRatesResponse(@Url String url);
+    Call<ResponseBody> getForecastResponse(@Url String url);
 }

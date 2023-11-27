@@ -29,6 +29,6 @@ public class MainActivity extends AppCompatActivity {
         ratesListView.setAdapter(adapter);
 
         RetrofitDataLoader rt = new RetrofitDataLoader();
-        rt.getData(getApplicationContext());
+        rt.getForecastData(getApplicationContext());
     }
 }
