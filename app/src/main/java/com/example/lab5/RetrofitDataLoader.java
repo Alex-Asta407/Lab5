@@ -22,11 +22,11 @@ public class RetrofitDataLoader {
     public void getForecastData(Context ctx) {
         forecastList = new ArrayList<>();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://your.base.url/")
+                .baseUrl("https://api.meteo.lt/v1/")
                 .build();
 
         IForecastService service = retrofit.create(IForecastService.class); // Use the new interface
-        Call<ResponseBody> stringCall = service.getForecastResponse("https://api.meteo.lt/v1/places/vilnius/forecasts/long-term");
+        Call<ResponseBody> stringCall = service.getForecastResponse("places/vilnius/forecasts/long-term");
         stringCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -34,12 +34,12 @@ public class RetrofitDataLoader {
                     try {
                         String jsonFromApi = response.body().string();
                         JSONObject jObj = new JSONObject(jsonFromApi);
-                        JSONArray forecastsArray = jObj.getJSONArray("forecasts");
+                        JSONArray forecastsArray = jObj.getJSONArray("forecastTimestamps");
 
                         for (int i = 0; i < forecastsArray.length(); i++) {
                             JSONObject forecastObject = forecastsArray.getJSONObject(i);
-                            String date = forecastObject.getString("date");
-                            String temperature = forecastObject.getString("temperature");
+                            String date = forecastObject.getString("forecastTimeUtc");
+                            String temperature = forecastObject.getString("airTemperature");
                             // Add other forecast details as needed
 
                             forecastList.add(date + " - Temperature: " + temperature);
